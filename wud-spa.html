@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wud Massage & Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #1a3328;
+    --green-mid: #2d5a45;
+    --green-soft: #3d7a5e;
+    --green-muted: #c8ddd6;
+    --green-pale: #e8f0ec;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d6;
+    --cream-mid: #d4c9b0;
+    --text-dark: #1a1a18;
+    --text-mid: #3a3a36;
+    --text-muted: #4a4a44;
+    --gold: #9a7c38;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--green-dark);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--green-mid); }
+
+  .nav-book {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--green-dark);
+    padding: 0.65rem 1.75rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-book:hover { background: var(--green-mid); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+
+  .hero-left {
+    background: var(--green-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 5rem 6rem 6rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-muted);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--green-muted);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--green-muted);
+    line-height: 1.8;
+    max-width: 380px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border: 1px solid var(--green-muted);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .hero-cta:hover {
+    background: var(--cream);
+    color: var(--green-dark);
+    border-color: var(--cream);
+  }
+
+  .hero-hours {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-hours-line {
+    width: 2rem;
+    height: 1px;
+    background: var(--green-soft);
+  }
+
+  .hero-hours span {
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+    color: var(--green-muted);
+    text-transform: uppercase;
+  }
+
+  .hero-right {
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-logo-img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+
+  .about-visual {
+    background: var(--green-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 4rem;
+  }
+
+  .about-numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .about-stat {
+    background: var(--cream);
+    padding: 2rem 1.75rem;
+  }
+
+  .about-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--green-dark);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .about-stat:nth-child(2), .about-stat:nth-child(4) {
+    background: var(--green-dark);
+  }
+
+  .about-stat:nth-child(2) .about-stat-num,
+  .about-stat:nth-child(4) .about-stat-num { color: var(--cream); }
+
+  .about-stat:nth-child(2) .about-stat-label,
+  .about-stat:nth-child(4) .about-stat-label { color: var(--green-muted); }
+
+  .about-content {
+    padding: 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .section-eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--green-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-body {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    max-width: 460px;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--green-dark);
+    padding: 7rem 6rem;
+  }
+
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--green-mid);
+    padding-bottom: 2rem;
+  }
+
+  .services-header .section-title { color: var(--cream); margin-bottom: 0; }
+  .services-header .section-eyebrow { color: var(--green-muted); }
+
+  .services-note {
+    font-size: 0.95rem;
+    color: var(--green-muted);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .duration-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--green-mid);
+    width: fit-content;
+  }
+
+  .duration-tab {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-muted);
+    background: none;
+    border: none;
+    padding: 0.7rem 1.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-right: 1px solid var(--green-mid);
+  }
+
+  .duration-tab:last-child { border-right: none; }
+
+  .duration-tab.active {
+    background: var(--cream);
+    color: var(--green-dark);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-bottom: 2rem;
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.04);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid var(--green-mid);
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: rgba(255,255,255,0.08); }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+
+  .service-desc {
+    font-size: 0.95rem;
+    color: var(--green-muted);
+    max-width: 220px;
+    line-height: 1.65;
+  }
+
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--cream);
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .service-price small {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-muted);
+    text-align: right;
+    margin-top: 0.2rem;
+  }
+
+  .foot-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--green-mid);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .foot-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .foot-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--cream);
+  }
+
+  .foot-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--cream);
+  }
+
+  .addons-section {
+    margin-top: 2px;
+    border: 1px solid var(--green-mid);
+    border-top: none;
+    padding: 2rem 2.5rem;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .addons-title {
+    font-size: 0.88rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green-muted);
+    margin-bottom: 1rem;
+  }
+
+  .addons-row {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .addon-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .addon-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .addon-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+  }
+
+  .addon-price {
+    font-size: 0.92rem;
+    color: var(--green-muted);
+    margin-left: 0.25rem;
+  }
+
+  /* ── FAQ ── */
+  .faq {
+    padding: 7rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    background: var(--cream);
+  }
+
+  .faq-left { padding-top: 0.5rem; }
+
+  .faq-list { list-style: none; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    transition: color 0.2s;
+  }
+
+  .faq-q:hover { color: var(--green-mid); }
+
+  .faq-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .faq-icon::before, .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--green-dark);
+    border-radius: 1px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  .faq-icon::before { width: 100%; height: 1px; top: 50%; left: 0; transform: translateY(-50%); }
+  .faq-icon::after { width: 1px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+
+  .faq-item.open .faq-icon::after { opacity: 0; transform: translateX(-50%) rotate(90deg); }
+
+  .faq-a {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.25s;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding-bottom: 1.5rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--cream-dark);
+    padding: 7rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info { }
+
+  .contact-detail {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .contact-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--cream);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .contact-detail-label {
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-detail-value {
+    font-size: 1rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+  }
+
+  .contact-reach {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .contact-reach-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+
+  .reach-options {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .reach-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.75rem;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+
+  .reach-btn-primary {
+    background: var(--green-dark);
+    color: var(--cream);
+    border: 1px solid var(--green-dark);
+  }
+
+  .reach-btn-primary:hover {
+    background: var(--green-mid);
+    border-color: var(--green-mid);
+  }
+
+  .reach-btn-secondary {
+    background: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--cream-mid);
+  }
+
+  .reach-btn-secondary:hover {
+    border-color: var(--green-mid);
+    color: var(--green-mid);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-dark);
+    padding: 3rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--green-mid);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--cream);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-copy {
+    font-size: 0.9rem;
+    color: var(--green-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── PRICE DISPLAY ── */
+  .price-display { display: inline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 5rem 2rem 3rem; }
+    .hero-right { min-height: 320px; }
+
+    .about { grid-template-columns: 1fr; }
+    .about-content { padding: 3rem 2rem; }
+    .about-visual { padding: 3rem 2rem; }
+
+    .services { padding: 4rem 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+    .faq { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 2rem; }
+    .contact { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Wud Massage & Spa</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-book">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Therapeutic &amp; Medical Massage</p>
+    <h1 class="hero-title">Heal from<br><em>the inside</em><br>out.</h1>
+    <p class="hero-sub">Professional therapeutic massage tailored to your body's needs — from deep tissue relief to traditional Filipino healing methods.</p>
+    <a href="#services" class="hero-cta">Explore Services</a>
+    <div class="hero-hours">
+      <div class="hero-hours-line"></div>
+      <span>Open Daily &nbsp;12:00 PM – 12:00 AM</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="Logo.png" alt="Wud Massage & Spa" class="hero-logo-img">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <div class="about-numbers">
+      <div class="about-stat">
+        <div class="about-stat-num">8+</div>
+        <div class="about-stat-label">Services offered</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">12H</div>
+        <div class="about-stat-label">Daily availability</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">2</div>
+        <div class="about-stat-label">Add-on treatments</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">₱200</div>
+        <div class="about-stat-label">Starting price</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-eyebrow">Who we are</p>
+    <h2 class="section-title">Rooted in the tradition<br>of healing touch.</h2>
+    <p class="section-body">At Wud Massage &amp; Spa, we believe that true wellness starts with the body. Our therapists are trained in both contemporary and traditional techniques — blending the science of therapeutic massage with the wisdom of Filipino healing practices like Hilot. Whether you need relief from muscle tension, stress, or fatigue, we tailor every session to what your body truly needs.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <p class="section-eyebrow">What we offer</p>
+      <h2 class="section-title">Our services</h2>
+    </div>
+    <p class="services-note">All sessions include a brief<br>consultation before treatment.</p>
+  </div>
+
+  <div class="duration-tabs">
+    <button class="duration-tab active" onclick="setDuration(60, this)">60 mins</button>
+    <button class="duration-tab" onclick="setDuration(90, this)">90 mins</button>
+    <button class="duration-tab" onclick="setDuration(120, this)">120 mins</button>
+  </div>
+
+  <div class="services-grid" id="services-grid">
+    <!-- filled by JS -->
+  </div>
+
+  <div class="foot-card">
+    <div>
+      <div class="foot-label">Specialty treatment</div>
+      <div class="foot-name">Foot Massage</div>
+      <div style="font-size:0.95rem;color:var(--green-muted);margin-top:0.3rem;">30 minutes · reflexology &amp; pressure point therapy</div>
+    </div>
+    <div class="foot-price">₱200</div>
+  </div>
+
+  <div class="addons-section">
+    <div class="addons-title">Add-ons &nbsp;—&nbsp; ₱200 each</div>
+    <div class="addons-row">
+      <div class="addon-item">
+        <div class="addon-dot"></div>
+        <span class="addon-name">Hot Stone</span>
+        <span class="addon-price">heated volcanic stones for deeper muscle relief</span>
+      </div>
+      <div class="addon-item">
+        <div class="addon-dot"></div>
+        <span class="addon-name">Ventosa</span>
+        <span class="addon-price">traditional cupping to release deep tension</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-left">
+    <p class="section-eyebrow">Common questions</p>
+    <h2 class="section-title">Things you<br>might want<br>to know.</h2>
+    <p class="section-body" style="margin-top:1.5rem;">Have a question not listed here? Reach out to us directly by phone or through our contact form.</p>
+  </div>
+  <ul class="faq-list" id="faq-list">
+    <!-- filled by JS -->
+  </ul>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <p class="section-eyebrow">Get in touch</p>
+    <h2 class="section-title" style="margin-bottom:2.5rem;">Visit or<br>reach out.</h2>
+
+    <div class="contact-detail">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </div>
+      <div>
+        <div class="contact-detail-label">Address</div>
+        <div class="contact-detail-value">MC Arevalo Building<br>Greenbreeze Subd, Sampaloc III<br>Dasmariñas, 4114 Cavite</div>
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14v2.92z"/></svg>
+      </div>
+      <div>
+        <div class="contact-detail-label">Contact Numbers</div>
+        <div class="contact-detail-value">0993 021 6211<br>0939 368 3909</div>
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <div class="contact-detail-label">Operating Hours</div>
+        <div class="contact-detail-value">Open every day<br>12:00 PM – 12:00 AM</div>
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-icon" style="background: #1877F2;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f5f0e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </div>
+      <div>
+        <div class="contact-detail-label">Facebook</div>
+        <div class="contact-detail-value">
+          <a href="https://www.facebook.com/profile.php?id=61590577088214" target="_blank" rel="noopener noreferrer" style="color:#2d5a45; text-decoration:none; font-weight:400; border-bottom:1px solid #a8c4b8; padding-bottom:1px;">Visit our Facebook page →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-reach">
+    <p class="contact-reach-intro">We would love to hear from you! Whether you have questions about our services, want to book a session, or simply need some guidance on what treatment suits you best — we are always happy to help.</p>
+    <p class="contact-reach-intro" style="margin-top:1rem;">Just reach out and we will get back to you as soon as we can. We look forward to welcoming you.</p>
+
+    <div class="reach-options">
+      <a href="https://m.me/61590577088214" target="_blank" rel="noopener noreferrer" class="reach-btn reach-btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Message us on Messenger
+      </a>
+      <a href="tel:09930216211" class="reach-btn reach-btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14v2.92z"/></svg>
+        0993 021 6211
+      </a>
+      <a href="tel:09393683909" class="reach-btn reach-btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14v2.92z"/></svg>
+        0939 368 3909
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Wud Massage & Spa</div>
+  <div class="footer-copy">© 2025 Wud Massage & Spa · Dasmariñas, Cavite</div>
+</footer>
+
+<script>
+  const services = [
+    { name: 'Swedish Massage', desc: 'Gentle, flowing strokes to ease tension and improve circulation.', prices: [400, 550, 650] },
+    { name: 'Combination Massage', desc: 'A blend of techniques customized to your body\'s needs.', prices: [450, 600, 700] },
+    { name: 'Shiatsu', desc: 'Japanese pressure-point therapy to restore energy flow.', prices: [500, 700, 850] },
+    { name: 'Traditional Hilot', desc: 'Filipino ancestral healing using warm banana leaves and touch.', prices: [600, 800, 950] },
+  ];
+
+  const faqs = [
+    { q: 'Do I need to make an appointment?', a: 'Walk-ins are welcome, but we highly recommend booking ahead — especially on weekends — to ensure your preferred therapist and time slot are available.' },
+    { q: 'What should I wear during my session?', a: 'Comfortable, loose clothing works best. We provide appropriate draping throughout your session to ensure your comfort and privacy at all times.' },
+    { q: 'Are your therapists professionally trained?', a: 'Yes. All our therapists are trained in their respective specializations, including both contemporary massage techniques and traditional Filipino Hilot practices.' },
+    { q: 'Can I add services like Hot Stone or Ventosa to any massage?', a: 'Absolutely. Our add-ons are available with any full-body massage service for an additional ₱200 each. Just let us know when you book or upon arrival.' },
+    { q: 'Is there parking available?', a: 'Yes, parking is available near the MC Arevalo Building in Greenbreeze Subdivision, Sampaloc III, Dasmariñas.' },
+    { q: 'Do you offer gift certificates?', a: 'We do! Gift certificates are available in-store. Please contact us directly to arrange one for a friend or loved one.' },
+  ];
+
+  let currentDuration = 60;
+
+  function setDuration(mins, btn) {
+    currentDuration = mins;
+    document.querySelectorAll('.duration-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    renderServices();
+  }
+
+  function renderServices() {
+    const idx = currentDuration === 60 ? 0 : currentDuration === 90 ? 1 : 2;
+    const grid = document.getElementById('services-grid');
+    grid.innerHTML = services.map(s => `
+      <div class="service-card">
+        <div>
+          <div class="service-name">${s.name}</div>
+          <div class="service-desc">${s.desc}</div>
+        </div>
+        <div class="service-price">
+          ₱${s.prices[idx]}
+          <small>${currentDuration} mins</small>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderFaqs() {
+    const list = document.getElementById('faq-list');
+    list.innerHTML = faqs.map((f, i) => `
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(${i})">
+          ${f.q}
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a">${f.a}</div>
+      </li>
+    `).join('');
+  }
+
+  function toggleFaq(i) {
+    const items = document.querySelectorAll('.faq-item');
+    items[i].classList.toggle('open');
+  }
+
+  renderServices();
+  renderFaqs();
+</script>
+</body>
+</html>
